@@ -10,16 +10,39 @@
 </head>
 
 <body>
-    <div id="app">{{greetting}}</div>
+    <div id="app">
 
+        {{greeting}}
+        <input v-model="greeting" />
 
+        <div v-if="isVisible">
+            <p>My name is {{name}}</p>
+        </div>
+        <div v-else-if="isVisible2">
+            <p>My name is {{name2}}</p>
+        </div>
+        <div v-else>
+            <p>My name is {{name2}} {{surname}}</p>
+        </div>
+
+        <div v-show="isVisible">
+            <p>My name is {{name}} {{surname}}</p>
+        </div>
+
+    </div>
 
     <script src="https://unpkg.com/vue@3"></script>
+
     <script>
         let app = Vue.createApp({
             data: function () {
                 return {
-                    greetting: 'Hellow Vue 3 !'
+                    greeting: 'Hello Vue 3 !',
+                    name: 'Peter',
+                    name2: 'George',
+                    surname: 'Pan',
+                    isVisible: false,
+                    isVisible2: false,
                 }
             }
         })
