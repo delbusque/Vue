@@ -7,10 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Vue 3 Basics</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" v-cloak>
 
         {{greeting}}
         <input v-model="greeting" />
@@ -21,7 +22,7 @@
         <div v-else-if="isVisible2">
             <p>My name is {{name2}}</p>
         </div>
-        <div v-else>
+        <div v-else class="text">
             <p>My name is {{name2}} {{surname}}</p>
         </div>
 
