@@ -1,7 +1,14 @@
 const app = Vue.createApp({
     data() {
-        return { name: 'John' }
+        return {
+            counter: 0
+        }
     },
+    methods: {
+        increment() {
+            this.counter++;
+        }
+    }
 
 });
 const vm = app.mount('#app');
