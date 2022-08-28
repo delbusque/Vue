@@ -12,7 +12,7 @@ const vm = Vue.createApp({
       return (taxRate * 100) - 100;
     },
     includingVat() {
-      //console.log('with computed');
+      console.log('with computed');
       return (this.price * taxRate).toFixed(2);
     },
     total() {
@@ -21,7 +21,7 @@ const vm = Vue.createApp({
   },
   methods: {
     includingVatMethod() {
-      //console.log('with method');
+      console.log('with method');
       return (this.price * taxRate).toFixed(2);
     }
   }
