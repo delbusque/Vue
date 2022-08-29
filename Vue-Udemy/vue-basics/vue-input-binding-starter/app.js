@@ -4,7 +4,17 @@ const vm = Vue.createApp({
       riddle1: '',
       riddle2: null,
       riddle3: [],
-      ready: true
+      ready: false
     }
   },
+  methods: {
+    log() {
+      console.log('My first event handler');
+      this.ready = false;
+      this.riddle3.push('variable')
+    },
+    sub() {
+      this.ready = true;
+    }
+  }
 }).mount('#app');
