@@ -19,23 +19,38 @@
     div {
       padding: 0.3rem;
     }
+
+    .page {
+      display: inline-block;
+      border: 1px solid red;
+      width: 1.2em;
+      margin-right: 0.5em;
+      text-align: center;
+    }
   </style>
 </head>
 
 <body>
   <div id="app">
-    <ul v-for="(item,i) of items">
+    <ul v-for="(item, index) of items">
       <li>
-        {{i+1}}. {{item.name}} for {{item.price}}$
+        {{index+1}}. {{item.name}} for {{item.price}}$
         <input type="button" value="+1$" @click="item.price++">
       </li>
     </ul>
 
     <ul>
-      <li v-for="(country, code, i) in countries">
-        {{i}}/ {{country}} ({{code}})
+      <li v-for="(country, code, index) in countries">
+        {{index}}/ {{country}} ({{code}})
       </li>
     </ul>
+
+    <div>
+      <button v-for="page in 10" class="page">{{page}}</button>
+    </div>
+    <div>
+      <button v-for="page in 3" class="page">{{page + 3}}</button>
+    </div>
   </div>
 </body>
 
