@@ -19,7 +19,18 @@ const vm = Vue.createApp({
         us: 'USA',
         br: 'Brazil',
         uk: 'United Kingdom'
-      }
+      },
+      todos: [
+        {
+          name: 'buyMilk',
+          ready: true
+        },
+        {
+          name: 'walk',
+          ready: false
+        }
+      ],
+      showTodos: true
     }
   },
 

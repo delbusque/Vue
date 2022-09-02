@@ -51,6 +51,24 @@
     <div>
       <button v-for="page in 3" class="page">{{page + 3}}</button>
     </div>
+
+    <template v-for="todo in todos">
+      <div v-if="todo.ready">
+        {{todo.name}}
+      </div>
+    </template>
+
+    <ul v-if="showTodos">
+      <template v-for="todo in todos">
+        <li>
+          {{todo.name}}
+          <strong v-if="todo.ready">- ready</strong>
+          <strong v-else-if="!todo.ready">- preparing</strong>
+        </li>
+      </template>
+    </ul>
+
+
   </div>
 </body>
 
