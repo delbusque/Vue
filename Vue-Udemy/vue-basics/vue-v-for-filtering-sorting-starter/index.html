@@ -4,8 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vue 3 List Filtering/Sorting</title>
   <script src="https://unpkg.com/vue@next"></script>
   <script src="app.js" defer></script>
@@ -43,14 +42,13 @@
         Toggle Sort Order
       </button>
       <div>
-        <input type="checkbox" id="paid-invoices"
-          v-model="onlyPaid">
+        <input type="checkbox" id="paid-invoices" v-model="onlyPaid">
         <label for="paid-invoices">Only paid
           invoices</label>
       </div>
     </div>
     <ul>
-      <li v-for="invoice in sortedInvoices">
+      <li v-for="invoice in sortedInvoices" :key="invoice.id">
         {{invoice.id}}, {{invoice.item}} for
         {{invoice.price}}$
       </li>
