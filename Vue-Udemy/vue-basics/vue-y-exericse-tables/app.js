@@ -1,9 +1,8 @@
-const vm = Vue.createApp({
+const app = Vue.createApp({
 
     data() {
         return {
-            isOpen: false,
-            opened: true,
+
             tables: [
                 {
                     id: 1,
@@ -39,18 +38,22 @@ const vm = Vue.createApp({
                     meals: null,
                     drinks: null,
                     seats: 4,
-                    isFree: true,
-                    opened: true
                 }
             ]
         }
     },
 
     methods: {
-        openTable() {
-            this.opened = false;
-            this.isOpen = true;
-        }
-    }
+    },
 
-}).mount('#app')
+
+
+});
+
+app.component('client-table', {
+    props: ['tablename'],
+    template: `<div class="bg-white shadow-sm rounded-md text-gray-700 text-xs md:text-sm p-4">{{tablename}}</div>`
+
+})
+
+app.mount('#app')
