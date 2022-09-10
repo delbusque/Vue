@@ -14,11 +14,14 @@
 <body class="bg-gray-50 text-gray-800">
 
   <div id="app" class="p-8 w-3/4 mx-auto">
-    <add-task-event></add-task-event>
-    <todo-list-item task="okey">
-    </todo-list-item>
-    <todo-list-item task="Sleep"></todo-list-item>
-    <todo-list-item task="Drawing"></todo-list-item>
+    <div class="mb-4">
+      <add-task-event @added="taskAdded"></add-task-event>
+    </div>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+      <todo-list-item task="okey"></todo-list-item>
+      <todo-list-item task="Sleep"></todo-list-item>
+      <todo-list-item task="Drawing"></todo-list-item>
+    </div>
   </div>
 </body>
 

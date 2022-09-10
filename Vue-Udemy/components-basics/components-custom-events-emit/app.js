@@ -1,8 +1,22 @@
+let nextTaskId = 100;
+
 const app = Vue.createApp({
    data() {
-      return {}
+      return {
+         tasks: []
+      }
    },
-   methods: {},
+   methods: {
+      taskAdded(task) {
+         console.log(task);
+         this.tasks.push({
+            id: nextTaskId++,
+            description: task,
+            done: false,
+            priority: false
+         })
+      }
+   },
    computed: {}
 });
 
@@ -11,15 +25,14 @@ app.component('todo-list-item', {
       task: {
          type: String,
          required: true,
-         validator(value) {
-            return 'okey' === value;
-         }
       },
    },
    template: `<div class="bg-white shadow-sm rounded-md text-gray-700 text-xs md:text-sm p-4">{{task}}</div>`
 });
 
 app.component('add-task-event', {
+   emits: ['added'],
+
    data() {
       return {
          task: ''
@@ -33,9 +46,11 @@ app.component('add-task-event', {
       }
    },
 
-   template: `<input type="text" placeholder="Enter task and hit enter"
-  @keyup.enter="add" v-model="task"
-  class="block w-full rounded-md shadow-sm text-lg p-4"/>`
+   template: `<input type="text"
+   placeholder="Enter task and hit enter"
+   @keyup.enter="add"
+   v-model="task"
+   class="block w-full rounded-md shadow-sm text-lg p-4"/>`
 })
 
 app.mount('#app');
