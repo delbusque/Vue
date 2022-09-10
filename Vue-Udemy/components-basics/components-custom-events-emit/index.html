@@ -18,9 +18,7 @@
       <add-task-event @added="taskAdded"></add-task-event>
     </div>
     <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-      <todo-list-item task="okey"></todo-list-item>
-      <todo-list-item task="Sleep"></todo-list-item>
-      <todo-list-item task="Drawing"></todo-list-item>
+      <todo-list-item v-for="task in tasks" :task="task" :key="task.id"></todo-list-item>
     </div>
   </div>
 </body>
