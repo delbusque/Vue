@@ -2,23 +2,27 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/vue@3"></script>
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.4/dist/tailwind.css">
-    <script src="/app.js" defer></script>
-    <title>Tables</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@3"></script>
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.4/dist/tailwind.css">
+  <script src="/app.js" defer></script>
+  <title>Tables</title>
 </head>
 
 <body class="bg-gray-50 text-gray-800">
-    <div id="app" class="p-8 w-3/4 mx-auto">
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-            <client-table tablename="Table 1"></client-table>
-            <client-table tablename="Table 2"></client-table>
-            <client-table tablename="Table 3"></client-table>
-        </div>
+  <div id="app" class="p-8 w-3/4 mx-auto">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+      <client-table v-for="table in tables" :table="table" :key="table.id" @opened="showTable(table)">
+      </client-table>
     </div>
+    <div v-for="table in tables" class="p-1 grid grid-cols-1 gap-4">
+      <opened-table v-if="table.opened" :table="table" :key="table.id">
+      </opened-table>
+    </div>
+
+  </div>
 </body>
 
 </html>
