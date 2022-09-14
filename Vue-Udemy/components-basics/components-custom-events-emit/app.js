@@ -3,17 +3,18 @@ let nextTaskId = 100;
 const app = Vue.createApp({
    data() {
       return {
+         onlyPending: false,
          tasks: [{
             id: 1,
             description: 'Buy food for the dog',
             priority: false,
-            done: false
+            done: true
          },
          {
             id: 2,
             description: 'Pay the bills',
             priority: true,
-            done: false
+            done: true
          },
          {
             id: 3,
@@ -29,6 +30,11 @@ const app = Vue.createApp({
          }]
       }
    },
+   computed: {
+      displayedTasks() {
+         return this.tasks.filter(task => !task.done || !this.onlyPending)
+      }
+   },
    methods: {
       taskAdded(task) {
          this.tasks.push({
@@ -39,8 +45,31 @@ const app = Vue.createApp({
          })
       }
    },
-   computed: {}
+
 });
+
+app.component('base-checkbox', {
+   props: {
+      modelValue: {
+         type: Boolean,
+         default: false
+      },
+      label: {
+         type: String,
+      }
+   },
+   emits: ['update:modelValue'],
+   methods: {
+      onChange() {
+         this.$emit('update:modelValue', !this.modelValue)
+      }
+   },
+   template: `<div class="flex items-center">
+   <input type="checkbox" :checked="modelValue" @change="onChange"
+   class="h-4 w-4 text-indigo-600 border-gray-300 rounded mr-2"/>
+   <label>{{label}}</label>
+   </div>`
+})
 
 app.component('todo-list-item', {
    props: {
